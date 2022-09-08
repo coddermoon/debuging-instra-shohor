@@ -51,8 +51,9 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
+  console.log(post)
  
-  const { userImage,image,description,comments}= post
+  const { userImage,image,description,comments,user:name}= post
   const {user,text}= comments[0]
  
   
@@ -68,7 +69,7 @@ const createPost = (post) => {
                   >
                     <img src="${userImage}" alt="User Picture" />
                   </a>
-                  <a href="#" class="post__user">phero</a>
+                  <a href="#" class="post__user">${name}</a>
                 </div>
 
                 <button class="post__more-options">
@@ -156,8 +157,9 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
+  document.getElementById( "reported" ).innerHTML=''
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
